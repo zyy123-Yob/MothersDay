@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para kay Mi ❤️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="heartCanvas"></canvas>
+
+    <audio id="bg-music" loop preload="auto">
+        <source src="assets/photographmusic.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="intro-screen">
+        <div class="heart-btn" id="enter-btn">❤️</div>
+        <p class="tap-text">Tap the heart, Mi...</p>
+    </div>
+
+    <div id="scrapboard">
+        
+        <div class="scatter-bg">
+            <img src="assets/Disneywmm.jpg" style="top: 5%; left: 5%; transform: rotate(-12deg);">
+            <img src="assets/CablecarwithmomonHongkong.jpg" style="top: 70%; left: 2%; transform: rotate(8deg);">
+            <img src="assets/Me&Momposingonoceanpark.jpg" style="top: 15%; right: 5%; transform: rotate(15deg);">
+            <img src="assets/Meonthebeachwithmom.jpg" style="top: 60%; right: 2%; transform: rotate(-10deg);">
+        </div>
+
+        <h1 class="board-title">Tap a memory to open it ❤️</h1>
+        
+        <div class="gallery">
+            <div class="memory-card" data-read="false">
+                <img src="assets/MeWhenbebeh.jpg" alt="Baby">
+                <div class="hidden-text">Look at us, Mi. It was just the two of us back then. I was already a Mama's boy even before I knew how to walk. I won at life the moment I had you as my mom.</div>
+            </div>
+
+            <div class="memory-card" data-read="false">
+                <img src="assets/Mewhenimprob2.jpg" alt="Demon">
+                <div class="hidden-text">I probably did something crazy right after this picture was taken. I know I was quite a handful growing up—always getting into trouble. But thank you for never giving up on me.</div>
+            </div>
+
+            <div class="memory-card" data-read="false">
+                <img src="assets/Momlooksoyoung.jpg" alt="Mom">
+                <div class="hidden-text">You really don't age, Mi! But beyond that, looking back makes me realize how hard you worked just to give me a good life. I will never take your sacrifices for granted.</div>
+            </div>
+
+            <div class="memory-card" data-read="false">
+                <img src="assets/MeMomDad.jpg" alt="Dad">
+                <div class="hidden-text">I honestly thought it would always be just the two of us, but then Dad came along. He might have been a bit late to the party, but he was exactly what we needed to complete us.</div>
+            </div>
+
+            <div class="memory-card" data-read="false">
+                <img src="assets/ILOVEMYFAMILY.jpg" alt="Family">
+                <div class="hidden-text">Now I have Joaquin and Lora. Thank you for building this family for us. Everything I'm doing in Mapúa right now is for you. I'm working hard so you won't have to worry about anything in the future. Just a little more time, Mi.</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="master-modal">
+        <div class="modal-box">
+            <div class="image-side">
+                <img id="modal-img" src="">
+            </div>
+            <div class="text-side">
+                <p id="modal-text"></p>
+                <button id="close-modal-btn">Close ❤️</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="finale-screen">
+        <img src="assets/OHmyFAMILY.jpg" class="finale-bg">
+        <div class="finale-content">
+            <h1>I love you, Mi.</h1>
+            <p>You have done everything for me, and now it’s my turn to make you proud. I might be grown up now, but I will always be your baby boy. Happy Mother's Day.</p>
+            <button id="go-back-btn">Back to Memories ↺</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
