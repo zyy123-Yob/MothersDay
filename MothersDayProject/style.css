@@ -35,7 +35,7 @@ canvas { position: fixed; top: 0; left: 0; z-index: 9999; pointer-events: none; 
 .polaroid-bg img { width: 100%; height: 160px; object-fit: cover; border: 1px solid #eee; }
 .polaroid-bg p { margin: 10px 0 0 0; font-size: 0.9rem; color: #444; font-weight: bold; }
 
-/* HARDCODED SAFE POSITIONS FOR DESKTOP (Left and Right Gutters) */
+/* HARDCODED SAFE POSITIONS FOR DESKTOP */
 .pos-1 { top: 2%; left: 8%; transform: rotate(-12deg); }
 .pos-2 { top: 8%; right: 10%; transform: rotate(8deg); }
 .pos-3 { top: 18%; left: 12%; transform: rotate(15deg); }
@@ -56,11 +56,10 @@ canvas { position: fixed; top: 0; left: 0; z-index: 9999; pointer-events: none; 
 #master-modal.visible { opacity: 1; pointer-events: all; }
 .modal-box { width: 1000px; max-width: 95vw; height: 600px; max-height: 90vh; background: white; border-radius: 20px; display: flex; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
 
-/* ZOOM LOGIC STYLES */
 .image-side { flex: 1.5; position: relative; overflow: hidden; background: #000; cursor: zoom-in; display: flex; justify-content: center; align-items: center; }
 .image-side img { width: 100%; height: 100%; object-fit: contain; transition: transform 0.3s ease; }
 .image-side.zoomed { cursor: zoom-out; }
-.image-side.zoomed img { transform: scale(2.5); /* MASSIVE ZOOM */ }
+.image-side.zoomed img { transform: scale(2.5); }
 .zoom-hint { position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.6); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; pointer-events: none; opacity: 0.8; }
 .image-side.zoomed .zoom-hint { display: none; }
 
@@ -68,18 +67,6 @@ canvas { position: fixed; top: 0; left: 0; z-index: 9999; pointer-events: none; 
 .text-side p { font-size: 1.3rem; color: #444; line-height: 1.6; }
 #close-modal-btn { background: #ff69b4; color: white; border: none; padding: 15px 35px; border-radius: 30px; cursor: pointer; margin-top: 30px; font-weight: bold; font-size: 1.2rem; transition: 0.3s;}
 #close-modal-btn:hover { background: #d87093; transform: scale(1.05); }
-
-/* MOBILE RESPONSIVE (Stacks everything cleanly, no overlap) */
-@media (max-width: 900px) {
-    #scrapboard { min-height: auto; padding: 20px; }
-    .scatter-container { position: relative; top: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-bottom: 50px; pointer-events: auto; }
-    .polaroid-bg { position: relative; top: auto !important; left: auto !important; right: auto !important; transform: none !important; width: 140px; }
-    .polaroid-bg:hover { transform: scale(1.1) !important; }
-    .modal-box { flex-direction: column; height: 90vh; overflow-y: auto; }
-    .image-side { height: 40vh; flex: none; }
-    .text-side { flex: none; padding: 20px; }
-    .text-side p { font-size: 1.1rem; }
-}
 
 /* FINALE */
 #finale-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 20000; display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: 3s; }
@@ -90,3 +77,34 @@ canvas { position: fixed; top: 0; left: 0; z-index: 9999; pointer-events: none; 
 .finale-content p { font-size: 1.4rem; line-height: 1.6; }
 #go-back-btn { background: transparent; color: white; border: 2px solid white; padding: 10px 25px; border-radius: 30px; cursor: pointer; margin-top: 30px; font-size: 1.1rem; transition: 0.3s;}
 #go-back-btn:hover { background: white; color: black; }
+
+/* THE MOBILE SCRAPBOOK VIBE FIX */
+@media (max-width: 900px) {
+    #scrapboard { min-height: auto; padding: 30px 10px; overflow-x: hidden; }
+    
+    /* Turn the background images into a messy pile */
+    .scatter-container { position: relative; top: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-bottom: 40px; pointer-events: auto; }
+    
+    /* Remove strict positioning but explicitly add rotations back to simulate scattering */
+    .polaroid-bg { position: relative !important; top: auto !important; left: auto !important; right: auto !important; width: 135px; box-shadow: 2px 5px 15px rgba(0,0,0,0.2); }
+    
+    /* CSS Math to fake a random scatter */
+    .polaroid-bg:nth-child(odd) { transform: rotate(-8deg) !important; margin-top: 15px; }
+    .polaroid-bg:nth-child(even) { transform: rotate(10deg) !important; margin-top: -10px; }
+    .polaroid-bg:nth-child(3n) { transform: rotate(-15deg) !important; margin-left: -15px; }
+    .polaroid-bg:nth-child(4n) { transform: rotate(6deg) !important; margin-right: -10px; }
+    
+    .polaroid-bg:hover { transform: scale(1.15) rotate(0deg) !important; z-index: 100; }
+    
+    /* Tilt the main cards slightly too so it doesn't look like a boring grid */
+    .main-gallery { gap: 30px; }
+    .memory-card { width: 90%; max-width: 320px; transform: rotate(-2deg); }
+    .memory-card:nth-child(even) { transform: rotate(3deg); }
+    .memory-card:hover { transform: scale(1.05) translateY(-5px); z-index: 100; }
+    
+    /* Modal tweaks */
+    .modal-box { flex-direction: column; height: 85vh; overflow-y: auto; }
+    .image-side { height: 40vh; flex: none; }
+    .text-side { flex: none; padding: 20px; }
+    .text-side p { font-size: 1.1rem; }
+}
